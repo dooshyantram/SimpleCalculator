@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Simple Calculator</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="js/jquery.mobile-1.4.5.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.4.5.js"></script>
+</head>
+
+ <body>
+ 	<!--Page Home Starts Here-->
+ 	<div data-role="page" data-dialog="true" id ="pageHome" data-theme="a">
+ 		<div data-role="header">
+ 			<h1>Simple Calculator</h1>
+              <div data-role="navbar">
+
+              	<ul>
+              		<li><a href="#" data-icon="home">Home</a></li>
+              		<li><a href="#pageCalculator" data-icon="grid">Calculator</a></li>
+              		<li><a href="#pageInfo" data-icon="info">Help</a></li>
+              	</ul>
+              	
+              </div>
+
+    </div>
+
+ 		<div role="main" class="ui-content">
+ 			<p>This is a jquery mobile excercise which provides the user with calculatore for the basic mathematical operations</p>
+ 			
+ 		</div>
+
+ 		<div data-role="footer">
+ 			<h2>Homework</h2>
+ 		</div>
+ 	</div>
+
+
+
+
+ 	<!--Page calculator Starts Here-->
+ 	<div data-role="page" data-dialog="true" id ="pageCalculator" data-theme="a">
+ 		<div data-role="header">
+ 			<h1>Simple Calculator</h1>
+              <div data-role="navbar">
+
+              	<ul>
+              		<li><a href="#pageHome" data-icon="home">Home</a></li>
+              		<li><a href="#" data-icon="grid">Calculator</a></li>
+              		<li><a href="#pageInfo" data-icon="info">Help</a></li>
+              	</ul>
+              	
+              </div>
+
+    </div>
+
+ 		<div role="main" class="ui-content">
+			  	<input type="text" name="textinput-s" id="textinput-s" placeholder="Number Input" value="" data-clear-btn="true">
+			   
+					<select name="select-native-s" id="select-native-s">
+					        <option id="plus" value="small">+</option>
+					        <option id="minus" value="medium">-</option>
+					        <option id="multiply" value="large">*</option>
+					        <option id="divide" value="large">/</option>
+					</select>
+
+				<input type="text" name="textinput-s" id="textinput-s" placeholder="Number Input" value="" data-clear-btn="true">	
+
+				
+				<a href="#pageAnswer" id="calc" class="ui-btn ui-corner-all ui-shadow ui-btn-b">Calculate</a>
+
+				<label id="result"></label>
+ 		</div>
+
+ 		<div data-role="footer">
+ 			<h2>Homework</h2>
+ 		</div>
+ 	</div>
+
+
+
+<!--Page Info Starts Here-->
+ 	<div data-role="page" data-dialog="true" id ="pageInfo" data-theme="a">
+ 		<div data-role="header">
+ 			<h1>Simple Calculator</h1>
+              <div data-role="navbar">
+
+              	<ul>
+              		<li><a href="#pageHome" data-icon="home">Home</a></li>
+              		<li><a href="#pageCalculator" data-icon="grid">Calculator</a></li>
+              		<li><a href="#" data-icon="info">Help</a></li>
+              	</ul>
+              	
+              </div>
+
+    </div>
+
+ 		<div role="main" class="ui-content">
+ 			<p>This is the help section and provides basic information on how to use the calculator </p>
+ 			<a href="#popupCloseRight" data-rel="popup" class="ui-btn ui-icon-info  ui-btn-icon-left">More Info</a>
+ 		</div>
+
+		<div data-role="popup" id="popupCloseRight" class="ui-content" style="max-width:280px" data-theme="a">
+		    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete  ui-btn-icon-notext ui-btn-right">Close</a>
+            <p>You have requested more information about the app</p>
+            <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Dismiss</a>
+        </div>
+        
+        <div data-role="footer">
+ 			<h2>Homework</h2>
+ 		</div>
+ 	</div>
+
+
+
+
+ 	<!--Page Answer Starts Here-->
+ 	<div data-role="page" data-dialog="true" id ="pageAnswer" data-theme="a">
+ 		<div data-role="header">
+ 			<h1>Results</h1>
+              <div data-role="navbar">
+
+              	<ul>
+              		<li><a href="#pageHome" data-icon="home">Home</a></li>
+              		<li><a href="#pageCalculator" data-icon="grid">Calculator</a></li>
+              		<li><a href="#" data-icon="info">Help</a></li>
+              	</ul>
+              	
+              </div>
+
+    </div>
+
+ 		<div role="main" class="ui-content">
+ 			<p>Operation: </p>
+ 			
+            <p id="operation"></p>
+            <br>
+ 			<p>Answer:</p>
+ 			<p id="ans"></p>
+ 		</div>
+
+		
+        
+        <div data-role="footer">
+ 			<h2>Homework</h2>
+ 		</div>
+ 	</div>
+
+
+
+
+ 		
+ 	
+
+    
+    <script type="text/javascript">
+            $(document).on("pagebeforecreate", function () {	    
+		})
+		
+		$(document).on("pagecontainerbeforeshow", function(event, data) {  
+		})
+		
+		$(document).on("pagecreate", "#calculator", function() {
+		   $("#plus, #minus, #multiply, #divide").on("tap", function(){
+                var number1 = parseInt($("#number1").val());
+                var number2 = parseInt($("#number2").val());
+                var answer;
+               
+               if($(this).text() == "ADD"){
+                   answer = number1 + number2;
+               }
+               else if($(this).text() == "SUBTRACT"){
+                   answer = number1 - number2;
+               }
+               else if($(this).text() == "MULTIPLY"){
+                   answer = number1 * number2;
+               }
+               else if($(this).text() == "DIVIDE"){
+                   answer = number1 / number2;
+               }
+               $("#aresult").text("Answer is " + answer);
+            })
+            $("#number1, #number2").on("tap", function(){
+                $("#result").text("");
+
+    	
+    </script>
+        
+
+
+
+ 	</body>
+
+</html>	
